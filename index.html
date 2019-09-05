@@ -1,59 +1,26 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="canonical" href="{{ site.url }}{{ page.url }}"/>
-<style>
-p {
-  text-align: center;
-  font-size: 60px;
-  margin-top: 0px;
-  color: Red
-}
+---
+---
 
-h1 {
-  text-align: center;
-  font-size: 60px;
-  margin-top: 0px;
-}
-</style>
-</head>
-<body>
+<section class="categories">
+	{% assign categories = site.categories | sort %}
+	{% for category in categories %}
+		{% assign name = category[0] %}
+		{% assign posts = category[1] %}
+		{% assign size = posts | size %}
+		<section class="category">
+				<h3>
+					<a href="{{ site.baseurl }}/category/{{ name | slugify }}/">{{ name | replace: "-", " " }}</a>
+				</h3>
 
-<h1>This is my personal website yo!</h1>
-<p id="demo"></p>
-<h1>Stay tuned to get surprised! :)</h1>
-
-<script>
-// Set the date we're counting down to
-var countDownDate = new Date("Sept 18, 2019 15:37:25").getTime();
-
-// Update the count down every 1 second
-var x = setInterval(function() {
-
-  // Get today's date and time
-  var now = new Date().getTime();
-    
-  // Find the distance between now and the count down date
-  var distance = countDownDate - now;
-    
-  // Time calculations for days, hours, minutes and seconds
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    
-  // Output the result in an element with id="demo"
-  document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-  + minutes + "m " + seconds + "s ";
-    
-  // If the count down is over, write some text 
-  if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("demo").innerHTML = "EXPIRED";
-  }
-}, 1000);
-</script>
-
-</body>
-</html>
+			<ul>
+				{% assign tutorials = posts | sort: "title" %}
+				{% for tutorial in tutorials limit: 4 %}
+					<li><a href="{{ site.baseurl }}{{ tutorial.url }}">{% include document-icon.html icon=tutorial.type %}{{ tutorial.title }}</a></li>
+				{% endfor %}
+				{% if size > 4 %}
+					<li><a href="{{ site.baseurl }}/category/{{ name | slugify }}/">{{ size | minus: 4 }} more...</a></li>
+				{% endif %}
+			</ul>
+		</section>
+	{% endfor %}
+</section>
