@@ -1,0 +1,78 @@
+.button.active {
+  color: #fff;
+  background-color: #2284a1;
+}
+
+.flex-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.flex-center-items {
+  align-items: center;
+}
+
+.flex-one {
+  flex: 1;
+}
+
+.small-input {
+  max-width: 50px;
+  margin-bottom: 0px !important;
+}
+
+input[type="checkbox"] {
+  margin: 0 10px 0 0;
+}
+
+label {
+  margin-bottom: 0px;
+  margin-right: 10px;
+}
+
+.pom-goal-circle {
+  width: 20px;
+  height: 20px;
+  border: 1px solid green;
+  border-radius: 50%;
+  background: white;
+  display: inline-block;
+  margin-right: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.pom-goal-circle-full {
+  background: green;
+}
+
+.margin-large-bottom {
+  margin-bottom: 24px;
+}
+
+.margin-small-right {
+  margin-right: 16px;
+}
+
+#tracker-goal-pomodoros {
+  flex-wrap: wrap;
+}
+
+#tracker-time-list {
+  overflow: auto;
+  display: block;
+}
+
+#tracker-time-list tbody {
+  display: table;
+  width: 100%;
+}
+
+#tracker-time-list .log-description {
+  margin: 0;
+}
+
+table tbody tr td {
+  vertical-align: middle;
+}
